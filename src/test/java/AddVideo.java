@@ -34,7 +34,7 @@ import org.openqa.selenium.Keys;
 import java.util.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-
+import org.junit.Assert;
 /**
  *
  * @author jackson
@@ -89,30 +89,42 @@ public class AddVideo {
 // catching the exception  
             System.out.println(expn);
         }
-        driver.findElement(By.name("password")).sendKeys("@Jackson123");
+        driver.findElement(By.name("password")).sendKeys("@Jacksonjk123");
         driver.findElement(By.cssSelector("#passwordNext > div > button")).click();
 
-
-        try {
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+   try {
             Thread.sleep(20000);
         } catch (Exception expn) {
 // catching the exception  
             System.out.println(expn);
         }
-
-        // 3 | click upload button when user first time uploading video | css=#galleryUploadEmptyState > .ng-star-inserted:nth-child(2) | 
-        driver.findElement(By.cssSelector("#galleryUploadEmptyState > .ng-star-inserted:nth-child(2)")).click();
-
-        // 3 | click upload button when user has uploaded video before \ | css=#galleryUpload > .i-vi-upload | 
-//        driver.findElement(By.cssSelector("#galleryUpload > .i-vi-upload")).click();
-        // 4 | type | css=.ui-fileupload-choose > input | /Users/jackson/Downloads/WhatsApp Video 2023-03-04 at 7.54.24 AM.mp4
+        String after_login_url = "https://www.videoindexer.ai/media/library";
+        String current_url = driver.getCurrentUrl();
+        
+        Assert.assertEquals(current_url, after_login_url);
+    
+        // 1 | click upload button 
+         driver.findElement(By.cssSelector("#galleryUpload > .i-vi-upload")).click();
+        // 2 | type | Send File location for uploading | /Users/jackson/Downloads/WhatsApp Video 2023-03-04 at 7.54.24 AM.mp4
         driver.findElement(By.cssSelector(".ui-fileupload-choose > input")).sendKeys("/Users/jackson/Downloads/WhatsApp Video 2023-03-04 at 7.54.24 AM.mp4");
-        // 5 | mouseOver | css=#uploadButtonAction > .ng-star-inserted | 
-        {
-            WebElement element = driver.findElement(By.cssSelector("#uploadButtonAction > .ng-star-inserted"));
-            Actions builder = new Actions(driver);
-            builder.moveToElement(element).click();
-        }
+        // 3 | Click checkbox before upload
+        driver.findElement(By.cssSelector(".checkbox-text")).click();
+
+        // 4 | click upload | 
+         
+        driver.findElement(By.id("uploadButtonAction")).click();
+        
+        
+        // 5 | assert check video name same as uploaded video name | 
+        Assert.assertEquals("WhatsApp Video 2023-03-04 at 7.54.24 AM.mp4",driver.findElement(By.cssSelector(".progress-video-name")).getText()+".mp4");
+        
+        String check_Percentage_Started;
+         // 6 | assert check upload percentage display exist 
+        check_Percentage_Started=driver.findElement(By.cssSelector(".percentage")).getText();
+        Assert.assertNotNull("Null Percentage , Havent Start Indexing", check_Percentage_Started);
+     
     }
 
 }
