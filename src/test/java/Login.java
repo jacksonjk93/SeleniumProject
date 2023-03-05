@@ -23,7 +23,8 @@ import org.junit.Assert;
  */
 public class Login {
     private WebDriver driver;
-    private String password = "@Jacksonjk123";
+    // Add password here before running
+    private String password = "";
     public Login() {
     }
 

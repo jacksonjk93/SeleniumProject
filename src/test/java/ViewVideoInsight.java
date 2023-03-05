@@ -23,7 +23,8 @@ import org.openqa.selenium.interactions.Actions;
 public class ViewVideoInsight {
 
     private WebDriver driver;
-    private String password = "@Jacksonjk123";
+    // Add password here before running
+    private String password = "";
 
     public ViewVideoInsight() {
     }
