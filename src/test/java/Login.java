@@ -4,36 +4,17 @@
  */
 
 import java.lang.Thread;
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.core.IsNot.not;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.Keys;
-import java.util.*;
-import java.net.MalformedURLException;
-import java.net.URL;
 import org.junit.Assert;
 
 /**
@@ -41,11 +22,8 @@ import org.junit.Assert;
  * @author jackson
  */
 public class Login {
-
     private WebDriver driver;
-    private Map<String, Object> vars;
-    JavascriptExecutor js;
-
+    private String password = "@Jacksonjk123";
     public Login() {
     }
 
@@ -61,17 +39,16 @@ public class Login {
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "/Users/jackson/NetBeansProjects/SeleniumProject/driver/chromedriver");
         driver = new ChromeDriver();
-        js = (JavascriptExecutor) driver;
     }
 
     @After
     public void tearDown() {
+        driver.quit();
     }
 
     @Test
     public void login() {
         // Test name: login
-        // Step # | name | target | value
         // 1 | open | https://www.videoindexer.ai/account/login | 
         driver.get("https://www.videoindexer.ai/account/login");
         // 2 | setWindowSize | 1367x827 | 
@@ -88,12 +65,18 @@ public class Login {
 // catching the exception  
             System.out.println(expn);
         }
-        // 6 | type | Enter password | @Jackson123
-        driver.findElement(By.name("password")).sendKeys("@Jacksonjk123");
+        // 6 | type | Enter password
+        driver.findElement(By.name("password")).sendKeys(password);
         // 7 | type | Click next button
         driver.findElement(By.cssSelector("#passwordNext > div > button")).click();
+        try {
+            Thread.sleep(20000);
+        } catch (Exception expn) {
+// catching the exception  
+            System.out.println(expn);
+        }
         // Verified Login Successfully
-        String after_login_url = "https://www.videoindexer.ai/";
+        String after_login_url = "https://www.videoindexer.ai/media/library";
         String current_url = driver.getCurrentUrl();
         Assert.assertEquals(current_url, after_login_url);
     }
