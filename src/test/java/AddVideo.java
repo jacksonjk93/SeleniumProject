@@ -27,7 +27,7 @@ public class AddVideo {
 
     private WebDriver driver;
     // Add password here before running
-    private String password = "";
+    private String password = "@Jacksonjk123";
 
     public AddVideo() {
     }
@@ -88,6 +88,16 @@ public class AddVideo {
         String current_url = driver.getCurrentUrl();
 
         Assert.assertEquals(current_url, after_login_url);
+        
+/////////////////////////////////////////////////////////////////////////////////////         
+        String check_pop_up_appear;
+        check_pop_up_appear = driver.findElement(By.id("mat-dialog-0")).getText();
+        if (check_pop_up_appear != null){
+          // click | Skip| 
+        driver.findElement(By.id("cancelSurveyBtn")).click();  
+        }
+        
+///////////////////////////////////////////////////////////////////////////////////// 
 
         // 1 | click upload button 
         driver.findElement(By.cssSelector("#galleryUpload > .i-vi-upload")).click();
@@ -147,6 +157,18 @@ public class AddVideo {
         String current_url = driver.getCurrentUrl();
 
         Assert.assertEquals(current_url, after_login_url);
+        
+/////////////////////////////////////////////////////////////////////////////////////         
+        String check_pop_up_appear;
+        check_pop_up_appear = driver.findElement(By.id("mat-dialog-0")).getText();
+        if (check_pop_up_appear != null){
+          // click | Skip| 
+        driver.findElement(By.id("cancelSurveyBtn")).click();  
+        }
+        
+///////////////////////////////////////////////////////////////////////////////////// 
+        
+        
         // 1 | click upload button on main page 
         driver.findElement(By.cssSelector("#galleryUpload > .i-vi-upload")).click();
 
@@ -201,6 +223,17 @@ public class AddVideo {
         // Verify Login and load to main video indexer page
         String after_login_url = "https://www.videoindexer.ai/media/library";
         String current_url = driver.getCurrentUrl();
+        
+/////////////////////////////////////////////////////////////////////////////////////         
+        String check_pop_up_appear;
+        check_pop_up_appear = driver.findElement(By.id("mat-dialog-0")).getText();
+        if (check_pop_up_appear != null){
+          // click | Skip| 
+        driver.findElement(By.id("cancelSurveyBtn")).click();  
+        }
+        
+///////////////////////////////////////////////////////////////////////////////////// 
+
 
         Assert.assertEquals(current_url, after_login_url);
         // 1 | click upload button on main page 
@@ -254,6 +287,17 @@ public class AddVideo {
         String current_url = driver.getCurrentUrl();
 
         Assert.assertEquals(current_url, after_login_url);
+
+/////////////////////////////////////////////////////////////////////////////////////         
+        String check_pop_up_appear;
+        check_pop_up_appear = driver.findElement(By.id("mat-dialog-0")).getText();
+        if (check_pop_up_appear != null){
+          // click | Skip| 
+        driver.findElement(By.id("cancelSurveyBtn")).click();  
+        }
+        
+/////////////////////////////////////////////////////////////////////////////////////         
+
         // 1 | click upload button on main page 
         driver.findElement(By.cssSelector("#galleryUpload > .i-vi-upload")).click();
 
@@ -307,6 +351,17 @@ public class AddVideo {
         String current_url = driver.getCurrentUrl();
 
         Assert.assertEquals(current_url, after_login_url);
+        
+/////////////////////////////////////////////////////////////////////////////////////         
+        String check_pop_up_appear;
+        check_pop_up_appear = driver.findElement(By.id("mat-dialog-0")).getText();
+        if (check_pop_up_appear != null){
+          // click | Skip| 
+        driver.findElement(By.id("cancelSurveyBtn")).click();  
+        }
+        
+/////////////////////////////////////////////////////////////////////////////////////         
+        
         // 1 | click upload button on main page 
         driver.findElement(By.cssSelector("#galleryUpload > .i-vi-upload")).click();
 

@@ -24,7 +24,7 @@ public class ViewVideoInsight {
 
     private WebDriver driver;
     // Add password here before running
-    private String password = "";
+    private String password = "@Jacksonjk123";
 
     public ViewVideoInsight() {
     }
@@ -78,6 +78,15 @@ public class ViewVideoInsight {
 // catching the exception  
             System.out.println(expn);
         }
+/////////////////////////////////////////////////////////////////////////////////////         
+        String check_pop_up_appear;
+        check_pop_up_appear = driver.findElement(By.id("mat-dialog-0")).getText();
+        if (check_pop_up_appear != null){
+          // click | Skip| 
+        driver.findElement(By.id("cancelSurveyBtn")).click();  
+        }
+        
+/////////////////////////////////////////////////////////////////////////////////////           
         // 1 | click | First thumbnail | 
         driver.findElement(By.cssSelector(".item-wrapper")).click();
         try {
