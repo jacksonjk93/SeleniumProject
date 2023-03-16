@@ -24,7 +24,7 @@ public class ViewVideoInsight {
 
     private WebDriver driver;
     // Add password here before running
-    private String password = "@Jacksonjk123";
+    private String password = "";
 
     public ViewVideoInsight() {
     }
@@ -82,7 +82,7 @@ public class ViewVideoInsight {
         String check_pop_up_appear;
         check_pop_up_appear = driver.findElement(By.id("mat-dialog-0")).getText();
         if (check_pop_up_appear != null){
-          // click | Skip| 
+        // click | Skip survey btn|  
         driver.findElement(By.id("cancelSurveyBtn")).click();  
         }
         
